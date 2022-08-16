@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/16 16:27:12 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:00:23 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*philo_function(void *t_philo)
 {
 	t_philosofer	*philosofer;
 
-	philosofer = (t_philosofer *)t_philo;
+	philosofer = (t_philosofer *) t_philo;
 	printf("I am the philosofer number %d \n", philosofer->nb);
 	return (NULL);
 }
