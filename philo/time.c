@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 11:28:03 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/16 11:49:16 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/16 20:45:43 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 	O t.tvusec mostra a quantidade de microsegundos faltando desde de aquela época. 
 */
 
-long long	get_time()
+long long int	get_time()
 {
-	struct timeval	t;
-	long long		t_sec_mili;
-	long long		t_usec_mili;
+	struct timeval		t;
+	long long int		t_sec_mili;
+	long long int		t_usec_mili;
 
 	gettimeofday(&t, NULL);
 	t_sec_mili = t.tv_sec * 1000;

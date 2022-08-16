@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_thread.c                                    :+:      :+:    :+:   */
+/*   print_stage.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/16 20:50:35 by mvieira-         ###   ########.fr       */
+/*   Created: 2022/08/16 20:37:12 by mvieira-          #+#    #+#             */
+/*   Updated: 2022/08/16 20:48:06 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-void	*philo_function(void *t_philo)
+void print_stage(t_data *data, int philo_id, char *log_message)
 {
-	t_philosofer	*philosofer;
-
-	philosofer = (t_philosofer *) t_philo;
-	print_stage(philosofer->data, philosofer->nb, "I was created");
-	return (NULL);
-}
-
-void	create_thread(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->n_philo)
-	{	
-		pthread_create(&(data->philos[i].tid), NULL, philo_function, &(data->philos[i]));
-		i++;
-	}
+    printf("%lli %i %s\n", get_time() - data->first_time, philo_id, log_message);
 }
