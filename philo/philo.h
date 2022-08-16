@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/16 11:09:01 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/16 11:28:56 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define PHILO_H
 
 # include	<stdio.h>
+# include <sys/time.h>
 
-void sayhello(void);
+long long get_time();
 
 #endif

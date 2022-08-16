@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 10:54:25 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/16 11:09:41 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/16 11:45:44 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	main()
 {
-	printf("Hello World \n");
-	sayhello();
+	printf("A%lld \n" , get_time());
 	return (0);
 }
