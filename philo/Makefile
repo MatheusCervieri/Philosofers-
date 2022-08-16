@@ -6,7 +6,7 @@
 #    By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 11:10:22 by mvieira-          #+#    #+#              #
-#    Updated: 2022/08/16 11:10:23 by mvieira-         ###   ########.fr        #
+#    Updated: 2022/08/16 12:55:16 by mvieira-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,10 @@ CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_PATH)
 RM = rm -f
 NAME = philo
 SRC_FILES = main.c \
-			time.c
+			time.c \
+			error.c \
+			initialization.c \
+			utils.c
 
 SOURCES = $(addprefix $(SRCS_PATH), $(SRC_FILES))
 OBJ_FILES = $(patsubst %.c, %.o, $(SRC_FILES))

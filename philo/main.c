@@ -6,14 +6,19 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 10:54:25 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/16 11:45:44 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/16 12:55:32 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main()
+int	main(int argc, char **argv)
 {
-	printf("A%lld \n" , get_time());
+	t_data	data;
+
+	if (argc != 0)
+	{
+		initialization(&data, argv);
+	}
 	return (0);
 }

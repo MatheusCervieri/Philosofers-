@@ -6,15 +6,15 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 11:28:03 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/16 11:46:52 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/16 11:49:16 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-
 /* A biblioteca do time mostra o tempo a partir de terminada data 1 de janeiro de 1970 (Epoch time.
 	O t.tv_sec mostra a quantidade de segundos desde de aquela época. 
+	O t.tvusec mostra a quantidade de microsegundos faltando desde de aquela época. 
 */
 
 long long	get_time()
