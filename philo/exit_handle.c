@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit_handle.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 10:54:25 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/16 13:17:42 by mvieira-         ###   ########.fr       */
+/*   Created: 2022/08/16 13:15:35 by mvieira-          #+#    #+#             */
+/*   Updated: 2022/08/16 13:17:25 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include <philo.h>
 
-int	main(int argc, char **argv)
+void destroy_all_mutex(t_data * data)
 {
-	t_data	data;
+    int	i;
 
-	if (argc != 0)
+	i = 0;
+	while (i < data->n_forks)
 	{
-		initialization(&data, argv);
+		pthread_mutex_destroy(&(data->forks_m[i]));
+		i++;
 	}
-	exit_handle(&data);
-	return (0);
+}
+
+void exit_handle(t_data *data)
+{
+    destroy_all_mutex(data);
 }
