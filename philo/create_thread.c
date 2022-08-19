@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 16:41:25 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 17:47:00 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	eats(t_philosofer *philosofer)
 	print_stage_id(data, philosofer->nb, "has taken a fork", philosofer->right_fork);
 	print_stage(data, philosofer->nb, "is eating");
 	philosofer->last_meal = get_time();
+	philosofer->eats = philosofer->eats + 1;
 	///usleep(100000);
 	usleep(data->t_eat * 1000);
 	pthread_mutex_unlock(&(data->forks_m[philosofer->left_fork]));
@@ -33,8 +34,6 @@ void	*philo_function(void *t_philo)
 {
 	t_philosofer	*philosofer;
 	t_data	*data;
-
-	
 
 	philosofer = (t_philosofer *) t_philo;
 	data = philosofer->data;
