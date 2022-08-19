@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:15:35 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 12:06:41 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:50:15 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,15 @@ void	join_all_philos(t_data *data)
 	}
 	
 }
+void array_free(t_data *data)
+{
+	free(data->forks_m); 
+	free(data->philos); 
+}
 
 void	exit_handle(t_data *data)
 {
 	destroy_all_mutex(data);
 	join_all_philos(data);
+	array_free(data);
 }

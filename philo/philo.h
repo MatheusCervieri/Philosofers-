@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 17:37:10 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:47:32 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sys/time.h>
 # include <pthread.h>
 # include <unistd.h>
+# include <stdlib.h>
 
 
 struct s_data;
@@ -43,8 +44,8 @@ typedef struct	s_data
 	int					five_parameter; 
 	long long int		first_time;
 	int					loop;
-	pthread_mutex_t		forks_m[100];
-	t_philosofer		philos[100];
+	pthread_mutex_t		*forks_m;
+	t_philosofer		*philos;
 }	t_data;
 
 long long	get_time();

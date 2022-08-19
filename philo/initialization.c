@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:42:37 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 17:38:12 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:48:52 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ void	philosofers_data_initialization(t_data *data)
 	}
 }
 
+void array_initiatilization(t_data *data)
+{
+	data->forks_m = malloc(sizeof(pthread_mutex_t) * data->n_forks);
+	data->philos = malloc(sizeof(t_philosofer) * data->n_philo);
+}
+
 void	initialization(t_data *data, char **argv)
 {
 	data->loop = 1;
@@ -51,9 +57,9 @@ void	initialization(t_data *data, char **argv)
 	data->t_death = ft_atoi(argv[2]);
 	data->t_eat = ft_atoi(argv[3]);
 	data->t_sleep = ft_atoi(argv[4]);
-
 	data->n_forks = data->n_philo;
 	data->first_time = get_time();
+	array_initiatilization(data);
 	mutex_forks_initialization(data);
 	philosofers_data_initialization(data);
 }
