@@ -6,11 +6,22 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 10:54:25 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 17:46:24 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:34:29 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+/*
+	0- Tratar os erros - malloc, número de argumentos...
+	1- Lidar com a exceção de apenas um filósofo.
+	2- Lidar com o problema que os filosofos estão pegando o mesmo gargo --> posso criar um array que armazena se o garfo já foi pego ou não.
+	3- Check how the death of the philosofer is verified. (Ver a régua).
+	4- Fazer os testes da régua.
+	5- Fazer os testes. 
+	
+
+*/
 
 int	main(int argc, char **argv)
 {
