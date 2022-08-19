@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 15:02:13 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 16:41:25 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	eats(t_philosofer *philosofer)
 	philosofer->last_meal = get_time();
 	///usleep(100000);
 	usleep(data->t_eat * 1000);
-	print_stage(data,philosofer->nb, "finished eating");
 	pthread_mutex_unlock(&(data->forks_m[philosofer->left_fork]));
 	pthread_mutex_unlock(&(data->forks_m[philosofer->right_fork]));
 }
@@ -41,16 +40,15 @@ void	*philo_function(void *t_philo)
 	data = philosofer->data;
 	while (data->loop)
 	{
+		eats(philosofer);
+		print_stage(data, philosofer->nb, "is sleeping");
+		usleep(data->t_sleep * 1000);
+		print_stage(data, philosofer->nb, "is thinking");
 		if((get_time() - philosofer->last_meal) > data->t_death)
 		{
 			print_stage(data, philosofer->nb, "died");
 			data->loop = 0;
 		}
-		eats(philosofer);
-		print_stage(data, philosofer->nb, "is sleeping");
-		usleep(data->t_sleep * 1000);
-		print_stage(data, philosofer->nb, "is thinking");
-	
 	}
 	return (NULL);
 }
