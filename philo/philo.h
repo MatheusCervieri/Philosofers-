@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 12:00:22 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:42:26 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include	<stdio.h>
 # include <sys/time.h>
 # include <pthread.h>
+# include <unistd.h>
+
 
 struct s_data;
 
