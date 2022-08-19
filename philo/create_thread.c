@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 17:47:00 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 17:51:42 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	*philo_function(void *t_philo)
 			print_stage(data, philosofer->nb, "died");
 			data->loop = 0;
 		}
+		if (data->n_eat == philosofer->eats)
+			break ;
 	}
 	return (NULL);
 }
