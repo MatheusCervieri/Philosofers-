@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 14:10:18 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 14:38:14 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_philosopher
 	struct s_data		*data;
 	int			left_fork;
 	int			right_fork;
+	long long int	last_meal;
 } 	t_philosofer;
 
 typedef struct	s_data
@@ -38,6 +39,7 @@ typedef struct	s_data
 	int					t_death;
 	int					t_sleep;
 	long long int		first_time;
+	int					loop;
 	pthread_mutex_t		forks_m[100];
 	t_philosofer		philos[100];
 }	t_data;
@@ -47,7 +49,8 @@ void		initialization(t_data *data, char **argv);
 int			ft_atoi(const char *nptr);
 void		exit_handle(t_data *data);
 void		create_thread(t_data *data);
-void		print_stage(t_data *data, int philo_id, char *log_message, int fork_id);
+void		print_stage_id(t_data *data, int philo_id, char *log_message, int fork_id);
+void print_stage(t_data *data, int philo_id, char *log_message);
 
 
 #endif

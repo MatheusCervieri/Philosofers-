@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:42:37 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 12:00:11 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 14:36:13 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	philosofers_data_initialization(t_data *data)
 
 void	initialization(t_data *data, char **argv)
 {
+	data->loop = 1;
 	data->n_philo = ft_atoi(argv[1]);
 	data->t_death = ft_atoi(argv[2]);
 	data->t_eat = ft_atoi(argv[3]);
