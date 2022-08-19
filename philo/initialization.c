@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:42:37 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/16 20:44:27 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:00:11 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ void	philosofers_data_initialization(t_data *data)
 	{
 		data->philos[i].nb = i;
 		data->philos[i].data = data;
+		data->philos[i].left_fork = i;
+		if (i == (data->n_philo - 1))
+			data->philos[i].right_fork = 0;
+		else
+			data->philos[i].right_fork = i + 1;
 		i++;
 	}
 }

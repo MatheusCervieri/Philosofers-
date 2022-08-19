@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/16 20:50:08 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:00:22 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_philosopher
 	int			nb;
 	pthread_t	tid; 	
 	struct s_data		*data;
+	int			left_fork;
+	int			right_fork;
 } 	t_philosofer;
 
 typedef struct	s_data
