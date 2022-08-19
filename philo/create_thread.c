@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 12:04:58 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:25:14 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ void	eats(t_philosofer *philosofer)
 	data = philosofer->data;
 	pthread_mutex_lock(&(data->forks_m[philosofer->left_fork]));
 	print_stage(data, philosofer->nb, "has taken a fork");
-
+	printf("Fork number %i \n", philosofer->left_fork);
+	pthread_mutex_lock(&(data->forks_m[philosofer->right_fork]));
+	print_stage(data, philosofer->nb, "has taken a fork");
+	printf("Fork number %i \n", philosofer->right_fork);
 	pthread_mutex_unlock(&(data->forks_m[philosofer->left_fork]));
+	pthread_mutex_unlock(&(data->forks_m[philosofer->right_fork]));
 }
 
 void	*philo_function(void *t_philo)
