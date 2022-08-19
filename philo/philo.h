@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 12:42:26 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 14:10:18 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		initialization(t_data *data, char **argv);
 int			ft_atoi(const char *nptr);
 void		exit_handle(t_data *data);
 void		create_thread(t_data *data);
-void		print_stage(t_data *data, int philo_id, char *log_message);
+void		print_stage(t_data *data, int philo_id, char *log_message, int fork_id);
 
 
 #endif
