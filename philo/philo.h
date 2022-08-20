@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 18:47:32 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/08/19 21:05:15 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		exit_handle(t_data *data);
 void		create_thread(t_data *data);
 void		print_stage_id(t_data *data, int philo_id, char *log_message, int fork_id);
 void print_stage(t_data *data, int philo_id, char *log_message);
+int is_not_number(char **argv);
 
 
 #endif
