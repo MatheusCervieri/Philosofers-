@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 21:05:15 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/02 16:00:04 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ struct s_data;
 typedef struct s_philosopher
 {
 	int			nb;
+	int			left_fork_at_hand;
+	int			right_fork_at_hand;
+	int			forks_at_hand;
 	pthread_t	tid; 	
 	struct s_data		*data;
 	int			left_fork;
@@ -44,6 +47,7 @@ typedef struct	s_data
 	int					five_parameter; 
 	long long int		first_time;
 	int					loop;
+	int					*forks;
 	pthread_mutex_t		*forks_m;
 	t_philosofer		*philos;
 }	t_data;

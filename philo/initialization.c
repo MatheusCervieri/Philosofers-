@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:42:37 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 18:48:52 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/02 16:00:57 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	philosofers_data_initialization(t_data *data)
 	while (i < data->n_philo)
 	{
 		data->philos[i].eats = 0;
+		data->philos[i].left_fork_at_hand = 0;
+		data->philos[i].right_fork_at_hand = 0;
+		data->philos[i].forks_at_hand = 0;
 		data->philos[i].last_meal = 0;
 		data->philos[i].nb = i;
 		data->philos[i].data = data;
@@ -44,10 +47,18 @@ void	philosofers_data_initialization(t_data *data)
 	}
 }
 
-void array_initiatilization(t_data *data)
+void	array_initiatilization(t_data *data)
 {
 	data->forks_m = malloc(sizeof(pthread_mutex_t) * data->n_forks);
+	data->forks = malloc(sizeof(int) * data->n_forks);
 	data->philos = malloc(sizeof(t_philosofer) * data->n_philo);
+	int i;
+	i = 0;
+	while (i < data->n_forks)
+	{
+		data->forks[i] = 0;
+		i++;
+	}
 }
 
 void	initialization(t_data *data, char **argv)

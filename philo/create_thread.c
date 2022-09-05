@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 18:14:33 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/05 09:32:29 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,33 @@ void	eats(t_philosofer *philosofer)
 
 	data = philosofer->data;
 	pthread_mutex_lock(&(data->forks_m[philosofer->left_fork]));
-	print_stage_id(data, philosofer->nb, "has taken a fork", philosofer->left_fork);
+	if (data->forks[philosofer->left_fork] == 0)
+	{
+		data->forks[philosofer->left_fork] = 1;
+		philosofer->left_fork_at_hand = philosofer->left_fork_at_hand + 1;
+		print_stage_id(data, philosofer->nb, "has taken a fork", philosofer->left_fork);
+	}
+	pthread_mutex_unlock(&(data->forks_m[philosofer->left_fork]));
 	pthread_mutex_lock(&(data->forks_m[philosofer->right_fork]));
-	print_stage_id(data, philosofer->nb, "has taken a fork", philosofer->right_fork);
+	if (data->forks[philosofer->right_fork] == 0)
+	{
+		data->forks[philosofer->right_fork] = 1;
+		philosofer->right_fork_at_hand = philosofer->right_fork_at_hand + 1;
+		print_stage_id(data, philosofer->nb, "has taken a fork", philosofer->right_fork);
+	}
+	pthread_mutex_unlock(&(data->forks_m[philosofer->right_fork]));
+	if (philosofer->left_fork_at_hand == 1 && philosofer->right_fork_at_hand == 1)
+	{
 	print_stage(data, philosofer->nb, "is eating");
 	philosofer->last_meal = get_time();
 	philosofer->eats = philosofer->eats + 1;
 	///usleep(100000);
 	usleep(data->t_eat * 1000);
-	pthread_mutex_unlock(&(data->forks_m[philosofer->left_fork]));
-	pthread_mutex_unlock(&(data->forks_m[philosofer->right_fork]));
+	}
+	if (philosofer->left_fork_at_hand == 1)
+		data->forks[philosofer->left_fork] = 0;
+	if (philosofer->right_fork_at_hand == 1)
+		data->forks[philosofer->right_fork] = 0;
 }
 
 void	*philo_function(void *t_philo)
