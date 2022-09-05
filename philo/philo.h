@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/02 16:00:04 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/05 12:01:31 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct	s_data
 	int					n_eat; 
 	int					five_parameter; 
 	long long int		first_time;
-	int					loop;
+	int					*loop;
 	int					*forks;
 	pthread_mutex_t		*forks_m;
 	t_philosofer		*philos;

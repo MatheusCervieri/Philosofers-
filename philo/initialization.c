@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:42:37 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/02 16:00:57 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/05 12:02:57 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	philosofers_data_initialization(t_data *data)
 	while (i < data->n_philo)
 	{
 		data->philos[i].eats = 0;
+		data->philos[i].last_meal = get_time();
 		data->philos[i].left_fork_at_hand = 0;
 		data->philos[i].right_fork_at_hand = 0;
 		data->philos[i].forks_at_hand = 0;
-		data->philos[i].last_meal = 0;
 		data->philos[i].nb = i;
 		data->philos[i].data = data;
 		data->philos[i].left_fork = i;
@@ -63,7 +63,11 @@ void	array_initiatilization(t_data *data)
 
 void	initialization(t_data *data, char **argv)
 {
-	data->loop = 1;
+	int *loop;
+
+	loop = malloc(sizeof(int));
+	*loop = 1;
+	data->loop = loop;
 	data->n_philo = ft_atoi(argv[1]);
 	data->t_death = ft_atoi(argv[2]);
 	data->t_eat = ft_atoi(argv[3]);
