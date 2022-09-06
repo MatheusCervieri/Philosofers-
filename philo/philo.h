@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/06 10:45:03 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/06 11:07:36 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,9 @@ typedef struct	s_data
 	int					*loop;
 	int					*forks;
 	pthread_mutex_t		*forks_m;
+	pthread_mutex_t		*eat_m;
 	t_philosofer		*philos;
 }	t_data;
-
-pthread_mutex_t	eat_mutex;
 
 long long	get_time();
 void		initialization(t_data *data, char **argv);
