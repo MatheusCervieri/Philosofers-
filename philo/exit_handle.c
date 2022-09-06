@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:15:35 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/06 11:10:33 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/06 13:07:37 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ void array_free(t_data *data)
 
 void	exit_handle(t_data *data)
 {
-
-	destroy_all_mutex(data);
 	join_all_philos(data);
+	destroy_all_mutex(data);
 	array_free(data);
 }
