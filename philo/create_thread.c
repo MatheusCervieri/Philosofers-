@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/06 11:11:14 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:23:01 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,14 @@ void death_checker(t_data *data)
 	{
 	int i;
 	i = 0;
-	while(i < data->n_philo)
+	while(i < data->n_philo && *(data->loop) == 1)
 	{
 		if ((get_time() - data->philos[i].last_meal) > data->t_death)
 		{
 			pthread_mutex_lock(data->eat_m);
-			print_stage(data, data->philos[i].nb, "died");
 			*(data->loop) = 0;
-			break ;
+			usleep(10000);
+			print_stage(data, data->philos[i].nb, "died");
 			pthread_mutex_unlock(data->eat_m);
 		}
 		i++;
