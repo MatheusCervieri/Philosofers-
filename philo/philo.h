@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/06 11:07:36 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/08 12:10:59 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_philosopher
 	int			right_fork;
 	long long int last_meal;
 	int			eats;
+	int			finished;
 } 	t_philosofer;
 
 typedef struct	s_data

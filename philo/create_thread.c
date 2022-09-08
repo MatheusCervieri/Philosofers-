@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/08 11:44:23 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/08 12:12:15 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,13 @@ void	*philo_function(void *t_philo)
 	{
 		if (take_forks(philosofer) != 0)
 			break ;
-		if(*(data->loop) == 0)
+		if (*(data->loop) == 0)
 			break ;
-		//if (data->n_eat == philosofer->eats && data->five_parameter == 1)
-			//break ;
+		if (data->n_eat == philosofer->eats && data->five_parameter == 1)
+		{
+			philosofer->finished = 1;
+			break ;
+		}
 	}
 	return (NULL);
 }
@@ -91,7 +94,7 @@ void death_checker(t_data *data)
 	i = 0;
 	while(i < data->n_philo && *(data->loop) == 1)
 	{
-		if ((get_time() - data->philos[i].last_meal) > data->t_death)
+		if ((get_time() - data->philos[i].last_meal) > data->t_death && data->philos[i].finished != 1)
 		{
 			pthread_mutex_lock(data->eat_m);
 			*(data->loop) = 0;

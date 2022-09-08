@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:42:37 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/08 11:41:40 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/08 12:10:44 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	philosofers_data_initialization(t_data *data)
 	while (i < data->n_philo)
 	{
 		data->philos[i].eats = 0;
+		data->philos[i].finished = 0;
 		data->philos[i].last_meal = get_time();
 		data->philos[i].left_fork_at_hand = 0;
 		data->philos[i].right_fork_at_hand = 0;
