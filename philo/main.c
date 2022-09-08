@@ -6,17 +6,17 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 10:54:25 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/05 11:59:36 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/08 11:28:19 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 /*
-	0- Tratar os erros - malloc[x], número de argumentos...
-	1- Lidar com a exceção de apenas um filósofo.
-	2- Lidar com o problema que os filosofos estão pegando o mesmo garfo --> posso criar um array que armazena se o garfo já foi pego ou não.
-	3- Check how the death of the philosofer is verified. (Ver a régua).
+	0 - Deadlock quando tem apenas um filosofo. 
+	1- Lidar com o último parametro. 
+	2 - Valgrind. 
+	3- Norma. 
 	4- Fazer os testes da régua.
 	5- Fazer os testes. 
 */
