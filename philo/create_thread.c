@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/08 10:06:44 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/08 10:22:25 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,45 +23,31 @@ int take_forks(t_philosofer *philosofer)
 	if (data->forks[philosofer->left_fork] == 0 && data->forks[philosofer->right_fork] == 0)
 	{
 		data->forks[philosofer->left_fork] = 1;
-		philosofer->left_fork_at_hand = philosofer->left_fork_at_hand + 1;
 		print_stage_id(data, philosofer->nb, "has taken a fork", philosofer->left_fork);
 		data->forks[philosofer->right_fork] = 1;
-		philosofer->right_fork_at_hand = philosofer->right_fork_at_hand + 1;
 		print_stage_id(data, philosofer->nb, "has taken a fork", philosofer->right_fork);
+		philosofer->last_meal = get_time();
+		print_stage(data, philosofer->nb, "is eating");
+		philosofer->eats = philosofer->eats + 1;
+		usleep(data->t_eat * 1000);
+		data->forks[philosofer->left_fork] = 0;
+		data->forks[philosofer->right_fork] = 0;
+		pthread_mutex_unlock(&(data->forks_m[philosofer->left_fork]));
+		pthread_mutex_unlock(&(data->forks_m[philosofer->right_fork]));
+		print_stage(data, philosofer->nb, "is sleeping");
+		usleep(data->t_sleep * 1000);
+		if (*(data->loop) == 0)
+			return (1);
+		print_stage(data, philosofer->nb, "is thinking");
 	}
-	pthread_mutex_unlock(&(data->forks_m[philosofer->left_fork]));
-	pthread_mutex_unlock(&(data->forks_m[philosofer->right_fork]));
+	else
+	{
+		pthread_mutex_unlock(&(data->forks_m[philosofer->left_fork]));
+		pthread_mutex_unlock(&(data->forks_m[philosofer->right_fork]));
+	}
 	return (0);
 }
 
-int	eats(t_philosofer *philosofer)
-{
-	t_data	*data;
-
-	data = philosofer->data;
-	if (*(data->loop) == 0)
-			return (1);
-	if (philosofer->left_fork_at_hand == 1 && philosofer->right_fork_at_hand == 1)
-	{	
-	philosofer->last_meal = get_time();
-	print_stage(data, philosofer->nb, "is eating");
-	philosofer->eats = philosofer->eats + 1;
-	usleep(data->t_eat * 1000);
-	data->forks[philosofer->left_fork] = 0;
-	data->forks[philosofer->right_fork] = 0;
-	philosofer->left_fork_at_hand = 0;
-	philosofer->right_fork_at_hand = 0;
-	if (*(data->loop) == 0)
-			return (1);
-	print_stage(data, philosofer->nb, "is sleeping");
-	usleep(data->t_sleep * 1000);
-	if (*(data->loop) == 0)
-			return (1);
-	print_stage(data, philosofer->nb, "is thinking");
-	}
-	return (0);
-
-}
 
 void	*philo_function(void *t_philo)
 {
@@ -76,10 +62,8 @@ void	*philo_function(void *t_philo)
 			break ;
 		if(*(data->loop) == 0)
 			break ;
-		if (eats(philosofer) != 0)
-			break ;
-		if (data->n_eat == philosofer->eats && data->five_parameter == 1)
-			break ;
+		//if (data->n_eat == philosofer->eats && data->five_parameter == 1)
+			//break ;
 	}
 	
 	return (NULL);
