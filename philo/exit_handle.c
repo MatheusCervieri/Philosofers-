@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:15:35 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/09 10:52:08 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:35:58 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,25 @@ void	destroy_all_mutex(t_data *data)
 void	join_all_philos(t_data *data)
 {
 	int	i;
-	
+
 	i = 0; 
-	while(i < (data->n_philo))
+	while (i < (data->n_philo))
 	{
 		pthread_join(data->philos[i].tid , NULL);
 		i++;
 	}
-	
 }
-void array_free(t_data *data)
+
+void	array_free(t_data *data)
 {
-	free(data->forks_m); 
-	free(data->philos); 
+	free(data->forks_m);
+	free(data->philos);
+	free(data->loop);
+	free(data->all_ate);
+	free(data->eat_m);
+	free(data->five_p_m);
+	free(data->print_m);
+	free(data->forks);
 }
 
 void	exit_handle(t_data *data)

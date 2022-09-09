@@ -6,7 +6,7 @@
 #    By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 11:10:22 by mvieira-          #+#    #+#              #
-#    Updated: 2022/08/16 20:38:02 by mvieira-         ###   ########.fr        #
+#    Updated: 2022/09/09 12:31:12 by mvieira-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ INCLUDE_PATH = ./
 SRCS_PATH = ./
 OBJS_PATH = ./
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_PATH) -pthread
+CFLAGS = -g -Wall -Wextra -Werror -I $(INCLUDE_PATH) -pthread
 RM = rm -f
 NAME = philo
 SRC_FILES = main.c \
