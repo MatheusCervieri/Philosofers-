@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/08 12:10:59 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/09 09:58:55 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_data
 	int					five_parameter; 
 	long long int		first_time;
 	int					*loop;
+	int					*all_ate;
 	int					*forks;
 	pthread_mutex_t		*forks_m;
 	pthread_mutex_t		*eat_m;

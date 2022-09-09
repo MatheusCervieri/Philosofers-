@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:42:37 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/08 12:10:44 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/09 10:04:03 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	initialization(t_data *data, char **argv)
 	loop = malloc(sizeof(int));
 	*loop = 1;
 	data->loop = loop;
+	data->all_ate = malloc(sizeof(int));
+	*(data->all_ate) = 0;
 	data->n_philo = ft_atoi(argv[1]);
 	data->t_death = ft_atoi(argv[2]);
 	data->t_eat = ft_atoi(argv[3]);
