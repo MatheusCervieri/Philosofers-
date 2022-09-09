@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:15:35 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/06 13:07:37 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/09 10:52:08 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	destroy_all_mutex(t_data *data)
 		i++;
 	}
 	pthread_mutex_destroy(data->eat_m);
+	pthread_mutex_destroy(data->five_p_m);
+	pthread_mutex_destroy(data->print_m);
 }
 
 void	join_all_philos(t_data *data)

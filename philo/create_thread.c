@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/09 10:23:44 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/09 10:59:43 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int take_forks(t_philosofer *philosofer)
 			return (1);
 		}
 		data->forks[philosofer->left_fork] = 1;
-		print_stage_id(data, philosofer->nb, "has taken a fork", philosofer->left_fork);
+		print_stage(data, philosofer->nb, "has taken a fork");
 		data->forks[philosofer->right_fork] = 1;
-		print_stage_id(data, philosofer->nb, "has taken a fork", philosofer->right_fork);
+		print_stage(data, philosofer->nb, "has taken a fork");
 		philosofer->last_meal = get_time();
 		print_stage(data, philosofer->nb, "is eating");
 		pthread_mutex_unlock(data->eat_m);
@@ -80,7 +80,9 @@ void	*philo_function(void *t_philo)
 		if (data->n_eat == philosofer->eats && data->five_parameter == 1)
 		{
 			philosofer->finished = 1;
+			pthread_mutex_lock(data->five_p_m);
 			*(data->all_ate) = *(data->all_ate) + 1;
+			pthread_mutex_unlock(data->five_p_m);
 			break ;
 		}
 	}
@@ -150,7 +152,7 @@ void	create_thread(t_data *data)
 		pthread_create(&(data->philos[i].tid), NULL, philo_function, &(data->philos[i]));
 		i++;
 	}
-	if (data->five_parameter != 1)
+	if (data->five_parameter != 1 || data->n_philo == 1)
 		death_checker(data);
 	else
 		death_checker_five_parameter(data);
