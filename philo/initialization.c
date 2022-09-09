@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:42:37 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/09 10:52:23 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:46:36 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,14 @@ void	philosofers_data_initialization(t_data *data)
 
 void	array_initiatilization(t_data *data)
 {
+	int	i;
+
 	data->forks_m = malloc(sizeof(pthread_mutex_t) * data->n_forks);
 	data->forks = malloc(sizeof(int) * data->n_forks);
 	data->philos = malloc(sizeof(t_philosofer) * data->n_philo);
 	data->eat_m = malloc(sizeof(pthread_mutex_t));
 	data->five_p_m = malloc(sizeof(pthread_mutex_t));
 	data->print_m = malloc(sizeof(pthread_mutex_t));
-	int i;
 	i = 0;
 	while (i < data->n_forks)
 	{
@@ -72,7 +73,7 @@ void	array_initiatilization(t_data *data)
 
 void	initialization(t_data *data, char **argv)
 {
-	int *loop;
+	int	*loop;
 
 	loop = malloc(sizeof(int));
 	*loop = 1;

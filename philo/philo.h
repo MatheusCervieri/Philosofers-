@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/09 10:50:54 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:45:15 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,33 +19,32 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-
-struct s_data;
+struct	s_data;
 
 typedef struct s_philosopher
 {
-	int			nb;
-	int			left_fork_at_hand;
-	int			right_fork_at_hand;
-	int			forks_at_hand;
-	pthread_t	tid; 	
-	struct s_data		*data;
-	int			left_fork;
-	int			right_fork;
-	long long int last_meal;
-	int			eats;
-	int			finished;
-} 	t_philosofer;
+	int				nb;
+	int				left_fork_at_hand;
+	int				right_fork_at_hand;
+	int				forks_at_hand;
+	pthread_t		tid;
+	struct s_data	*data;
+	int				left_fork;
+	int				right_fork;
+	long long int	last_meal;
+	int				eats;
+	int				finished;
+}	t_philosofer;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	int					n_philo;
 	int					n_forks;
 	int					t_eat;
 	int					t_death;
 	int					t_sleep;
-	int					n_eat; 
-	int					five_parameter; 
+	int					n_eat;
+	int					five_parameter;
 	long long int		first_time;
 	int					*loop;
 	int					*all_ate;
@@ -57,14 +56,12 @@ typedef struct	s_data
 	t_philosofer		*philos;
 }	t_data;
 
-long long	get_time();
+long long	get_time(void);
 void		initialization(t_data *data, char **argv);
 int			ft_atoi(const char *nptr);
 void		exit_handle(t_data *data);
 void		create_thread(t_data *data);
-void		print_stage_id(t_data *data, int philo_id, char *log_message, int fork_id);
-void print_stage(t_data *data, int philo_id, char *log_message);
-int is_not_number(char **argv);
-
+void		print_stage(t_data *data, int philo_id, char *log_message);
+int			is_not_number(char **argv);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:15:35 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/09 12:35:58 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:39:08 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	join_all_philos(t_data *data)
 {
 	int	i;
 
-	i = 0; 
+	i = 0;
 	while (i < (data->n_philo))
 	{
-		pthread_join(data->philos[i].tid , NULL);
+		pthread_join(data->philos[i].tid, NULL);
 		i++;
 	}
 }

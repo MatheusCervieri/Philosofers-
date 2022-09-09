@@ -6,27 +6,28 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:42:37 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/19 21:06:23 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:45:01 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int is_not_number(char **argv)
+int	is_not_number(char **argv)
 {
-    int i;
-    int j;
-    i = 1;
-    while (argv[i])
-    {
-        j = 0;
-        while(argv[i][j])
-        {
-            if(argv[i][j] < '0' || argv[i][j] > '9')
-                return (1);
-            j++;
-        }   
-        i++;
-    }
-    return (0);
+	int	i;
+	int	j;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
