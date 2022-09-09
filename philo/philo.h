@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/09 12:55:36 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/09 13:17:08 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,7 @@ void		create_thread(t_data *data);
 void		print_stage(t_data *data, int philo_id, char *log_message);
 int			is_not_number(char **argv);
 void		death_checker_utils(t_data *data, int i);
+void		death_checker_five_parameter(t_data *data);
+void		death_checker(t_data *data);
 
 #endif

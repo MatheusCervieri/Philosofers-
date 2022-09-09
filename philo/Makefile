@@ -6,7 +6,7 @@
 #    By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 11:10:22 by mvieira-          #+#    #+#              #
-#    Updated: 2022/09/09 12:31:12 by mvieira-         ###   ########.fr        #
+#    Updated: 2022/09/09 13:16:25 by mvieira-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRC_FILES = main.c \
 			utils.c \
 			exit_handle.c \
 			create_thread.c \
-			print_stage.c
+			print_stage.c \
+			death_checker.c \
 
 SOURCES = $(addprefix $(SRCS_PATH), $(SRC_FILES))
 OBJ_FILES = $(patsubst %.c, %.o, $(SRC_FILES))
