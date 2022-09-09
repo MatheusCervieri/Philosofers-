@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:15:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/09 13:15:58 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/09 13:27:25 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ void	death_checker(t_data *data)
 			i++;
 		}
 	}
+}
+
+void	death_checker_utils(t_data *data, int i)
+{
+	pthread_mutex_lock(data->eat_m);
+	*(data->loop) = 0;
+	usleep(1000);
+	print_stage(data, data->philos[i].nb, "died");
+	*(data->all_ate) = data->n_philo;
+	pthread_mutex_unlock(data->eat_m);
 }
 
 void	death_checker_five_parameter(t_data *data)
