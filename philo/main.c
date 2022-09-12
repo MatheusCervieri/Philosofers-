@@ -6,21 +6,11 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 10:54:25 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/09 12:56:56 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/12 13:16:27 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-/*
-	
-	2 - Valgrind. 
-	3- Norma. 
-	4- 1 ou 0 filosofo primeiro (Existe o filósofo 0?).
-	4- Fazer os testes da régua.
-	5- Fazer os testes. 
-	./philo 5 60 200 200 7
-*/
 
 int	main(int argc, char **argv)
 {
