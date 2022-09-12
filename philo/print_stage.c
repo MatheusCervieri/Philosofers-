@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 20:37:12 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/12 13:53:26 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/12 13:55:02 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	print_stage(t_data *data, int philo_id, char *log_message)
 {
 	pthread_mutex_lock(data->print_m);
-	printf("%lli %i %s\n", get_time() - data->first_time, philo_id + 1, log_message);
+	printf("%lli %i %s\n", get_time() - data->first_time,
+		philo_id + 1, log_message);
 	pthread_mutex_unlock(data->print_m);
 }
