@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/13 17:19:41 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 12:25:38 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,27 @@ int	actions_util(t_philosofer *philosofer, t_data *data)
 	print_stage(data, philosofer->nb, "has taken a fork");
 	data->forks[philosofer->right_fork] = 1;
 	print_stage(data, philosofer->nb, "has taken a fork");
+	philosofer->last_meal = get_time();
 	print_stage(data, philosofer->nb, "is eating");
 	pthread_mutex_unlock(data->eat_m);
 	philosofer->eats = philosofer->eats + 1;
-	philosofer->last_meal = get_time();
 	sleep_in_parts(data->t_eat);
 	data->forks[philosofer->left_fork] = 0;
 	data->forks[philosofer->right_fork] = 0;
-	unlock_forks(data, philosofer);
+	pthread_mutex_unlock(&(data->forks_m[philosofer->left_fork]));
+	pthread_mutex_unlock(&(data->forks_m[philosofer->right_fork]));
 	if (stop_checker(philosofer, data) == 1)
 		return (1);
 	if (end_thread(data) == 1)
 		return (1);
 	return (0);
+}
+
+void	unlock_forks(t_data *data, t_philosofer *philosofer)
+{
+	pthread_mutex_unlock(&(data->forks_m[philosofer->left_fork]));
+	if (philosofer->right_fork != -1)
+		pthread_mutex_unlock(&(data->forks_m[philosofer->right_fork]));
 }
 
 int	actions(t_philosofer *philosofer)
@@ -43,10 +51,10 @@ int	actions(t_philosofer *philosofer)
 	data = philosofer->data;
 	if (end_thread(data) == 1)
 		return (1);
-	forks_lock(philosofer, data, 0);
+	pthread_mutex_lock(&(data->forks_m[philosofer->left_fork]));
 	if (philosofer->right_fork != -1)
 	{
-		forks_lock(philosofer, data, 1);
+		pthread_mutex_lock(&(data->forks_m[philosofer->right_fork]));
 		if ((data->forks[philosofer->left_fork] == 0)
 			&& data->forks[philosofer->right_fork] == 0)
 		{
@@ -71,8 +79,6 @@ void	*philo_function(void *t_philo)
 
 	philosofer = (t_philosofer *) t_philo;
 	data = philosofer->data;
-	if (philosofer->nb % 2)
-		usleep(15000);
 	while (*(data->loop))
 	{
 		if (actions(philosofer) != 0)
@@ -93,7 +99,6 @@ void	create_thread(t_data *data)
 	{	
 		pthread_create(&(data->philos[i].tid), NULL,
 			philo_function, &(data->philos[i]));
-		data->philos[i].last_meal = get_time();
 		i++;
 	}
 	if (data->five_parameter != 1 || data->n_philo == 1)

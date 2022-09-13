@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:52:12 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/13 17:13:27 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 12:54:00 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	end_thread_unlock(t_data *data, t_philosofer *philosofer)
 
 int	stop_checker(t_philosofer *philosofer, t_data *data)
 {
-	if (philosofer->eats == data->n_eat && data->five_parameter == 1)
+	if (data->n_eat == philosofer->eats && data->five_parameter == 1)
 	{
 		philosofer->finished = 1;
 		pthread_mutex_lock(data->five_p_m);
@@ -87,6 +87,6 @@ void	sleep_in_parts(int mili_sec)
 	start_time = get_time();
 	while (get_time() - start_time < mili_sec)
 	{
-		usleep(500);
+		usleep(50);
 	}
 }
