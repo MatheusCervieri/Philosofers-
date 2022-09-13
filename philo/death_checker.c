@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:15:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/13 10:28:57 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 10:39:21 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	death_checker(t_data *data)
 		i = 0;
 		while (i < data->n_philo && *(data->loop) == 1)
 		{
+			pthread_mutex_lock(data->eat_m);
 			if ((get_time() - data->philos[i].last_meal)
 				> data->t_death && data->philos[i].finished != 1)
 			{
-				pthread_mutex_lock(data->eat_m);
 				pthread_mutex_lock(data->data_loop_m);
 				*(data->loop) = 0;
 				pthread_mutex_unlock(data->data_loop_m);
@@ -32,6 +32,8 @@ void	death_checker(t_data *data)
 				print_stage(data, data->philos[i].nb, "died");
 				pthread_mutex_unlock(data->eat_m);
 			}
+			else
+				pthread_mutex_unlock(data->eat_m);
 			i++;
 		}
 	}
@@ -39,7 +41,6 @@ void	death_checker(t_data *data)
 
 void	death_checker_utils(t_data *data, int i)
 {
-	pthread_mutex_lock(data->eat_m);
 	pthread_mutex_lock(data->data_loop_m);
 	*(data->loop) = 0;
 	pthread_mutex_unlock(data->data_loop_m);
@@ -67,11 +68,14 @@ void	death_checker_five_parameter(t_data *data)
 		{
 			while (i < data->n_philo && *(data->loop) == 1)
 			{
+				pthread_mutex_lock(data->eat_m);
 				if ((get_time() - data->philos[i].last_meal)
 					> data->t_death && data->philos[i].finished != 1)
 				{
 					death_checker_utils(data, i);
 				}
+				else
+					pthread_mutex_unlock(data->eat_m);
 				i++;
 			}
 		}
