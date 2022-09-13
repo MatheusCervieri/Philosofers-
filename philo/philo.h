@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/13 16:15:48 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 16:29:20 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,8 @@ int			end_thread(t_data *data);
 int			end_thread_unlock(t_data *data, t_philosofer *philosofer);
 int			stop_checker(t_philosofer *philosofer, t_data *data);
 void		sleep_in_parts(int mili_sec);
+void		unlock_forks(t_data *data, t_philosofer *philosofer);
+void		forks_lock(t_philosofer *philosofer, t_data *data, int position);
+void		forks_unlock(t_philosofer *philosofer, t_data *data, int position);
 
 #endif
