@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:42:37 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/13 10:50:51 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:58:49 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	initialization(t_data *data, char **argv)
 	data->t_eat = ft_atoi(argv[3]);
 	data->t_sleep = ft_atoi(argv[4]);
 	data->n_forks = data->n_philo;
-	data->first_time = get_time();
 	array_initiatilization(data);
 	pthread_mutex_init(data->eat_m, NULL);
 	pthread_mutex_init(data->five_p_m, NULL);

@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/13 11:55:38 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:59:01 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	create_thread(t_data *data)
 	int	i;
 
 	i = 0;
+	data->first_time = get_time();
 	while (i < data->n_philo)
 	{	
 		pthread_create(&(data->philos[i].tid), NULL,
