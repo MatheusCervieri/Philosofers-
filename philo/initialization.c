@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:42:37 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/13 11:58:49 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 17:39:26 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	initialization(t_data *data, char **argv)
 {
 	int	*loop;
 
+	if (data->five_parameter == 0)
+		data->n_eat = 0;
 	loop = malloc(sizeof(int));
 	*loop = 1;
 	data->loop = loop;
