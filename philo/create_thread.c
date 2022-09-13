@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/12 20:55:40 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 09:26:12 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	end_thread(t_data *data)
 		return (1);
 	}	
 	else
-		pthread_mutex_unlock(data->data_loop_m);	
+		pthread_mutex_unlock(data->data_loop_m);
 	return (0);
 }
 
