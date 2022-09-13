@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:15:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/13 11:48:45 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 12:47:04 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	death_checker(t_data *data)
 				pthread_mutex_lock(data->data_loop_m);
 				*(data->loop) = 0;
 				pthread_mutex_unlock(data->data_loop_m);
-				usleep(1000);
+				sleep_in_parts(1);
 				print_stage(data, data->philos[i].nb, "died");
 				pthread_mutex_unlock(data->eat_m);
 			}
@@ -48,7 +48,7 @@ void	death_checker_utils(t_data *data, int i)
 		pthread_mutex_lock(data->data_loop_m);
 		*(data->loop) = 0;
 		pthread_mutex_unlock(data->data_loop_m);
-		usleep(1000);
+		sleep_in_parts(1);
 		print_stage(data, data->philos[i].nb, "died");
 		*(data->all_ate) = data->n_philo;
 		pthread_mutex_unlock(data->eat_m);

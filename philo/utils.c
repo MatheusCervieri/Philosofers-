@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:52:12 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/13 11:54:33 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 12:54:00 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,15 @@ int	stop_checker(t_philosofer *philosofer, t_data *data)
 		return (1);
 	}
 	return (0);
+}
+
+void	sleep_in_parts(int mili_sec)
+{
+	long long int	start_time;
+
+	start_time = get_time();
+	while (get_time() - start_time < mili_sec)
+	{
+		usleep(50);
+	}
 }

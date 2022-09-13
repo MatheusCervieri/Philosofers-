@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/13 11:59:01 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 12:25:38 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	actions_util(t_philosofer *philosofer, t_data *data)
 	print_stage(data, philosofer->nb, "is eating");
 	pthread_mutex_unlock(data->eat_m);
 	philosofer->eats = philosofer->eats + 1;
-	usleep(data->t_eat * 1000);
+	sleep_in_parts(data->t_eat);
 	data->forks[philosofer->left_fork] = 0;
 	data->forks[philosofer->right_fork] = 0;
 	pthread_mutex_unlock(&(data->forks_m[philosofer->left_fork]));
@@ -61,7 +61,7 @@ int	actions(t_philosofer *philosofer)
 			if (actions_util(philosofer, data) == 1)
 				return (1);
 			print_stage(data, philosofer->nb, "is sleeping");
-			usleep(data->t_sleep * 1000);
+			sleep_in_parts(data->t_sleep);
 			if (end_thread(data) == 1)
 				return (1);
 			print_stage(data, philosofer->nb, "is thinking");
