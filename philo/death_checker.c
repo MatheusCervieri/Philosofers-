@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:15:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/12 20:50:05 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 10:28:57 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,11 @@ void	death_checker_five_parameter(t_data *data)
 	while (1)
 	{
 		i = 0;
-		if (*(data->all_ate) == data->n_philo)
+		if (*(data->all_ate) >= data->n_philo)
 		{
+			pthread_mutex_lock(data->data_loop_m);
 			*(data->loop) = 0;
+			pthread_mutex_unlock(data->data_loop_m);
 			break ;
 		}
 		if (data->philos[i].finished == 0)

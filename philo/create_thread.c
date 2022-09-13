@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:58:04 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/13 09:26:12 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 10:33:51 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,14 @@ int	actions_util(t_philosofer *philosofer, t_data *data)
 	data->forks[philosofer->right_fork] = 0;
 	pthread_mutex_unlock(&(data->forks_m[philosofer->left_fork]));
 	pthread_mutex_unlock(&(data->forks_m[philosofer->right_fork]));
+	if (data->n_eat == philosofer->eats && data->five_parameter == 1)
+	{
+			philosofer->finished = 1;
+			pthread_mutex_lock(data->five_p_m);
+			*(data->all_ate) = *(data->all_ate) + 1;
+			pthread_mutex_unlock(data->five_p_m);
+			return (1);
+	}
 	if (end_thread(data) == 1)
 		return (1);
 	return (0);
@@ -113,14 +121,6 @@ void	*philo_function(void *t_philo)
 			break ;
 		if (end_thread(data) == 1)
 			break ;
-		if (data->n_eat == philosofer->eats && data->five_parameter == 1)
-		{
-			philosofer->finished = 1;
-			pthread_mutex_lock(data->five_p_m);
-			*(data->all_ate) = *(data->all_ate) + 1;
-			pthread_mutex_unlock(data->five_p_m);
-			break ;
-		}
 	}
 	return (NULL);
 }
