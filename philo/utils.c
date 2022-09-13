@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:52:12 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/13 12:54:00 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 17:55:21 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ void	sleep_in_parts(int mili_sec)
 	start_time = get_time();
 	while (get_time() - start_time < mili_sec)
 	{
-		usleep(50);
+		usleep(500);
 	}
 }
