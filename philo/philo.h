@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:09:47 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/09 13:17:08 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/12 20:42:34 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_data
 	pthread_mutex_t		*eat_m;
 	pthread_mutex_t		*five_p_m;
 	pthread_mutex_t		*print_m;
+	pthread_mutex_t		*data_loop_m;
 	t_philosofer		*philos;
 }	t_data;
 

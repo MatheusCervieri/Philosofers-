@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:15:35 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/09 12:39:08 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/12 20:44:54 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	destroy_all_mutex(t_data *data)
 	pthread_mutex_destroy(data->eat_m);
 	pthread_mutex_destroy(data->five_p_m);
 	pthread_mutex_destroy(data->print_m);
+	pthread_mutex_destroy(data->data_loop_m);
 }
 
 void	join_all_philos(t_data *data)
