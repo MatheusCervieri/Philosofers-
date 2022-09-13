@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:52:12 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/09 13:22:21 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:54:33 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,46 @@ int	ft_atoi(const char *nptr)
 		nptr++;
 	}
 	return (result * signal);
+}
+
+int	end_thread(t_data *data)
+{
+	pthread_mutex_lock(data->data_loop_m);
+	if (*(data->loop) == 0)
+	{
+		pthread_mutex_unlock(data->data_loop_m);
+		return (1);
+	}	
+	else
+		pthread_mutex_unlock(data->data_loop_m);
+	return (0);
+}
+
+int	end_thread_unlock(t_data *data, t_philosofer *philosofer)
+{
+	pthread_mutex_lock(data->data_loop_m);
+	if (*(data->loop) == 0)
+	{
+		pthread_mutex_unlock(&(data->forks_m[philosofer->left_fork]));
+		pthread_mutex_unlock(&(data->forks_m[philosofer->right_fork]));
+		pthread_mutex_unlock(data->eat_m);
+		pthread_mutex_unlock(data->data_loop_m);
+		return (1);
+	}
+	else
+		pthread_mutex_unlock(data->data_loop_m);
+	return (0);
+}
+
+int	stop_checker(t_philosofer *philosofer, t_data *data)
+{
+	if (data->n_eat == philosofer->eats && data->five_parameter == 1)
+	{
+		philosofer->finished = 1;
+		pthread_mutex_lock(data->five_p_m);
+		*(data->all_ate) = *(data->all_ate) + 1;
+		pthread_mutex_unlock(data->five_p_m);
+		return (1);
+	}
+	return (0);
 }
