@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:42:37 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/13 11:58:49 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/13 17:00:07 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	philosofers_data_initialization(t_data *data)
 	i = 0;
 	while (i < data->n_philo)
 	{
-		data->philos[i].eats = 0;
 		data->philos[i].finished = 0;
+		data->philos[i].eats = 0;
 		data->philos[i].last_meal = get_time();
 		data->philos[i].left_fork_at_hand = 0;
 		data->philos[i].right_fork_at_hand = 0;
@@ -76,6 +76,8 @@ void	initialization(t_data *data, char **argv)
 {
 	int	*loop;
 
+	if (data->five_parameter == 0)
+		data->n_eat = 0;
 	loop = malloc(sizeof(int));
 	*loop = 1;
 	data->loop = loop;
